@@ -86,8 +86,8 @@ Backtrace:
 /home/travis/.rvm/gems/ruby-2.4.2/gems/middleman-cli-4.2.1/bin/middleman:70:in `<top (required)>'
 /home/travis/.rvm/gems/ruby-2.4.2/bin/middleman:23:in `load'
 /home/travis/.rvm/gems/ruby-2.4.2/bin/middleman:23:in `<main>'
-/home/travis/.rvm/gems/ruby-2.4.2/bin/ruby_executable_hooks:15:in `eval'
-/home/travis/.rvm/gems/ruby-2.4.2/bin/ruby_executable_hooks:15:in `<main>'
+/home/travis/.rvm/gems/ruby-2.4.2/bin/ruby_executable_hooks:24:in `eval'
+/home/travis/.rvm/gems/ruby-2.4.2/bin/ruby_executable_hooks:24:in `<main>'
 */
 body:before {
   white-space: pre;
