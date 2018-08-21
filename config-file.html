@@ -68,13 +68,6 @@ that will be used to replace the named matches.</p>
    ]
 }
 </code></pre>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-We mostly attribute it on our own regarding plenty of underlying factors. The <code>apiKey</code> that we provide is generated with a restriction on the <code>index_name</code>. Changing the <code>index_name</code> would require to ask for a new key. Thus if you want to <strong>change the name</strong>, please <strong>submit a new configuration</strong>, we will generate a new key accordingly.</p>
-<h3 id="start_urls-mandatory"><code>start_urls</code> <em>Mandatory</em> <a class="anchor" href="#start_urls-mandatory" aria-hidden="true"></a></h3>
-<p>You can pass either a string or an array of urls. The crawler will go to each
-page in order, following every link it finds on the page. It will only stop if
-the domain is outside of the <code>allowed_domains</code> or if the link is blacklisted from the <code>stop_urls</code>.</p>
-<h1 id="note-that-we-currently-do-not-follow-301-redirects.">Note that we currently do not follow <em>301</em> redirects. <a class="anchor" href="#note-that-we-currently-do-not-follow-301-redirects." aria-hidden="true"></a></h1>
 <p>The beneficial side effect of using this syntax is that all records that will
 then be extracted from crawling <code>http://www.example.com/docs/en/latest</code> will have
 <code>lang: en</code> and <code>version: latest</code> added to it, allowing you to then filter based on
