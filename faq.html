@@ -25,7 +25,7 @@ content from your website and populate an Algolia index with it every day. All
 you need to do is keep your website online, and we take care of the rest.</p>
 <h3 id="how-much-does-it-cost%3F">How much does it cost? <a class="anchor" href="#how-much-does-it-cost%3F" aria-hidden="true"></a></h3>
 <p>Nothing.</p>
-<p>We know that paying for search infrastructure is a cost not many Open Source
+<p>We know that paying for search infrastructure is a cost not all Open Source
 projects can afford. That's why we decided to keep DocSearch free for everyone.
 All we ask in exchange is that you keep the <em>powered by
 <a href="https://www.algolia.com/">Algolia</a></em> logo displayed next to the search results.</p>
@@ -35,18 +35,19 @@ though, depending on the size of your documentation, you might need a paid
 account (free accounts can hold as much as 10k records).</p>
 <h3 id="what-data-are-you-collecting%3F">What data are you collecting? <a class="anchor" href="#what-data-are-you-collecting%3F" aria-hidden="true"></a></h3>
 <p>The data we save in the index is the data we extract from your website
-markup, in a custom JSON format instead of HTML. Exactly which part of the
+markup, in a custom JSON format instead of HTML. Which part of the
 page is defined in your custom config.</p>
 <p>As the website owner, we also give you access to the Algolia Analytics
 dashboard, that will let you have more data about the anonymized searches that
 were done on your website. You'll be able to see the most searched terms, or
 those with no results.</p>
+<p><em>If you don't have Analytics access, send us an email and we'll enable it.</em></p>
 <h3 id="where-is-my-data-hosted%3F">Where is my data hosted? <a class="anchor" href="#where-is-my-data-hosted%3F" aria-hidden="true"></a></h3>
 <p>All DocSearch data is hosted on Algolia's servers, with replication around the
 globe. You can find more details about the actual <a href="https://www.algolia.com/doc/guides/infrastructure/servers/">server specs here</a>, and more
 complete information in our <a href="https://www.algolia.com/policies/privacy">privacy policy</a>.</p>
 <h3 id="can-i-use-docsearch-on-non-doc-pages%3F">Can I use DocSearch on non-doc pages? <a class="anchor" href="#can-i-use-docsearch-on-non-doc-pages%3F" aria-hidden="true"></a></h3>
-<p>The free DocSearch we provide will only crawl documentation pages. If you want
+<p>The free DocSearch we provide will crawl documentation pages. If you want
 to use it on other parts of your website, you'll need to create your own Algolia
 account and either:</p>
 <ul>
@@ -56,15 +57,15 @@ account and either:</p>
 <h3 id="can-you-index-code-samples%3F">Can you index code samples? <a class="anchor" href="#can-you-index-code-samples%3F" aria-hidden="true"></a></h3>
 <p>Yes, but we do not recommend it.</p>
 <p>Code samples are a great way for humans to understand how a specific pattern
-/ method should be used. Unfortunately, it often requires boilerplate code,
-repeated into several examples, which will only add noise to the results.</p>
+/ method should be used. It often requires boilerplate code though, repeated
+across examples, which will add noise to the results.</p>
 <p>What we recommend instead is to exclude the code blocks from the indexing (by
 using the <code>selectors_exclude</code> option in your config), and instead structure your
 content so the method names are actual headers.</p>
 <h3 id="why-do-i-have-duplicate-content-in-my-results%3F">Why do I have duplicate content in my results? <a class="anchor" href="#why-do-i-have-duplicate-content-in-my-results%3F" aria-hidden="true"></a></h3>
-<p>This can happen when you have several urls pointing to the same content, for
-example with <code>./docs</code>, <code>./docs/</code> and <code>./docs/index.html</code> or even both <code>http</code> and
-<code>https</code> in place.</p>
+<p>This can happen when you have more than one urls pointing to the same content,
+for example with <code>./docs</code>, <code>./docs/</code> and <code>./docs/index.html</code> or even both <code>http</code>
+and <code>https</code> in place.</p>
 <p>This can be fixed by <code>stop_urls</code> to all the patterns you want to exclude. The
 following example will exclude all urls ending with <code>/</code> or <code>index.html</code> as well
 as those starting with <code>http://</code>.</p>
