@@ -16,31 +16,36 @@
 your own theme. This can be achieved by overriding the CSS classes used by the
 default theme.</p>
 <p>The following annotated example will help you style each part:</p>
-<pre><code class="hljs language-css"><span class="hljs-comment">/* Match title (eg. Bootstrap CDN) */</span>
-<span class="hljs-selector-class">.algolia-docsearch-suggestion--title</span> {
-  <span class="hljs-attribute">font-weight</span>: bold;
-  <span class="hljs-attribute">color</span>: black;
+<pre><code class="hljs language-css"><span class="hljs-comment">/* Main dropdown wrapper */</span>
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.ds-dropdown-menu</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
 }
 
-<span class="hljs-comment">/* Match description (eg. Bootstrap currently works...) */</span>
-<span class="hljs-selector-class">.algolia-docsearch-suggestion--text</span> {
-  <span class="hljs-attribute">font-size</span>: .<span class="hljs-number">8rem</span>;
-  <span class="hljs-attribute">color</span>: gray;
-}
-
-<span class="hljs-comment">/* Match category (eg. Downloads) */</span>
-<span class="hljs-selector-class">.algolia-docsearch-suggestion--subcategory-column</span> {
-  <span class="hljs-attribute">color</span>: gray;
-}
-
-<span class="hljs-comment">/* Match main category (eg. Getting Started) */</span>
-<span class="hljs-selector-class">.algolia-docsearch-suggestion--category-header</span> {
+<span class="hljs-comment">/* Main category (eg. Getting Started) */</span>
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--category-header</span> {
   <span class="hljs-attribute">color</span>: darkgray;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid gray;
 }
 
+<span class="hljs-comment">/* Category (eg. Downloads) */</span>
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--subcategory-column</span> {
+  <span class="hljs-attribute">color</span>: gray;
+}
+
+<span class="hljs-comment">/* Title (eg. Bootstrap CDN) */</span>
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--title</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">color</span>: black;
+}
+
+<span class="hljs-comment">/* Description description (eg. Bootstrap currently works...) */</span>
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--text</span> {
+  <span class="hljs-attribute">font-size</span>: .<span class="hljs-number">8rem</span>;
+  <span class="hljs-attribute">color</span>: gray;
+}
+
 <span class="hljs-comment">/* Highlighted text */</span>
-<span class="hljs-selector-class">.algolia-docsearch-suggestion--highlight</span> {
+<span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--highlight</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
