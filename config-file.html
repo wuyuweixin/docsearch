@@ -69,9 +69,9 @@ that will be used to replace the named matches.</p>
 }
 </code></pre>
 <p>The beneficial side effect of using this syntax is that all records that will
-then be extracted from crawling <code>http://www.example.com/docs/en/latest</code> will have
-<code>lang: en</code> and <code>version: latest</code> added to it, allowing you to then filter based on
-those values.</p>
+then be extracted from crawling <code>http://www.example.com/docs/en/latest</code> will
+have <code>lang: en</code> and <code>version: latest</code> added to it, allowing you to then filter
+based on those values.</p>
 <p>The following example shows how you can filter results matching specifics
 language and version from the front-end</p>
 <pre><code class="hljs language-js">docsearch({
@@ -81,21 +81,6 @@ language and version from the front-end</p>
   },
 });
 </code></pre>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>Updating config doc</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <h3 id="using-custom-tags">Using custom tags <a class="anchor" href="#using-custom-tags" aria-hidden="true"></a></h3>
 <p>You can also apply custom tags to some pages without the need to use regular
 expressions. In that case, add the list of tags to the <code>tags</code> key. Note
@@ -179,29 +164,10 @@ set of selectors should be applied to specific pages.</p>
    }
 }
 </code></pre>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<h3 id="start_urls.tags"><code>start_urls.tags</code> <a class="anchor" href="#start_urls.tags" aria-hidden="true"></a></h3>
-<h1 id="tags-will-be-apllied-to-every-record-from-the-matchin-matched-pages%2C-i.e.%2C-its-url-is-matchin-the-url.-these-tags-will-be-processed-as-attributesforfaceting-.-if-you-want-further-detail%2C-check-the-original-documentation.we-do-recommend-to-use-tags-if-you-want-to-refine-the-scope-of-your-search.">Tags will be apllied to every record from the matchin matched pages, i.e., its URL is matchin the <code>url</code>. These <code>tags</code> will <a href="https://www.algolia.com/doc/api-reference/api-parameters/attributesForFaceting/">be processed as <code>attributesForFaceting</code></a> . If you want further detail, <a href="https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/">check the original documentation</a>.
-We do recommend to use <code>tags</code> if you want <a href="https://www.algolia.com/doc/guides/searching/faceting/#faceting-overview">to refine the scope of your search</a>. <a class="anchor" href="#tags-will-be-apllied-to-every-record-from-the-matchin-matched-pages%2C-i.e.%2C-its-url-is-matchin-the-url.-these-tags-will-be-processed-as-attributesforfaceting-.-if-you-want-further-detail%2C-check-the-original-documentation.we-do-recommend-to-use-tags-if-you-want-to-refine-the-scope-of-your-search." aria-hidden="true"></a></h1>
 <p>Here, all documentation pages will use the selectors defined in
 <code>selectors.default</code> while the page under <code>./concepts</code> will use
 <code>selectors.concepts</code> and those under <code>./contributors</code> will use
 <code>selectors.contributors</code>.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>Updating config doc</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 <h2 id="selectors"><code>selectors</code> <a class="anchor" href="#selectors" aria-hidden="true"></a></h2>
 <p>This object contains all the CSS selectors that will be used to create the
 record hierarchy. It can contains up to 6 levels (<code>lvl0</code>, <code>lvl1</code>, <code>lvl2</code>,
@@ -309,7 +275,9 @@ browser first, making sure they match what you're expecting.</p>
 recommend changing it as the default settings are meant to work for all
 websites.</p>
 <p>One use case would be to configure the <code>separatorsToIndex</code> setting. By default
-Algolia will consider all special character as a word separator. In some contexts, like for method names, you might want <code>_</code>, <code>/</code> or <code>#</code> to keep their meaning.</p>
+Algolia will consider all special character as a word separator. In some
+contexts, like for method names, you might want <code>_</code>, <code>/</code> or <code>#</code> to keep their
+meaning.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"custom_settings"</span>: {
     <span class="hljs-attr">"separatorsToIndex"</span>: <span class="hljs-string">"_/"</span>
@@ -346,11 +314,11 @@ records for each <code>lvlX</code> selectors, but only for the <code>text</code>
 }
 </code></pre>
 <h3 id="scrape_start_urls-optional"><code>scrape_start_urls</code> <em>Optional</em> <a class="anchor" href="#scrape_start_urls-optional" aria-hidden="true"></a></h3>
-<p>By default, the crawler will not extract content from the pages defined in
-<code>starts_urls</code>.  If you have valuable content on your homepage, you should set
-this to <code>true</code>.</p>
+<p>By default, the crawler will extract content from the pages defined in
+<code>start_urls</code>. If you do not have any valuable content on your <code>starts_urls</code> or
+if it's a duplicate of another page, you should set this to <code>false</code>.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"scrape_start_urls"</span>: <span class="hljs-literal">true</span>
+  <span class="hljs-attr">"scrape_start_urls"</span>: <span class="hljs-literal">false</span>
 }
 </code></pre>
 <h3 id="selectors_exclude-optional"><code>selectors_exclude</code> <em>Optional</em> <a class="anchor" href="#selectors_exclude-optional" aria-hidden="true"></a></h3>
@@ -408,10 +376,10 @@ DocSearch will ignore those urls.</p>
 <p>With the above config and the <code>sitemap.xml</code> below, both
 <code>http://www.example.com/docs/</code> and <code>http://www.example.com/docs/de/</code> will be
 crawled.</p>
-<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">loc</span>&gt;</span>http://www.example.com/docs/<span class="hljs-tag">&lt;/<span class="hljs-name">loc</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">xhtml:link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"alternate"</span> <span class="hljs-attr">hreflang</span>=<span class="hljs-string">"de"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.example.com/de/"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+<pre><code class="hljs language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">loc</span>&gt;</span>http://www.example.com/docs/<span class="hljs-tag">&lt;/<span class="hljs-name">loc</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">xhtml:link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"alternate"</span> <span class="hljs-attr">hreflang</span>=<span class="hljs-string">"de"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.example.com/de/"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
 </code></pre>
 <h2 id="javascript-rendering">JavaScript rendering <a class="anchor" href="#javascript-rendering" aria-hidden="true"></a></h2>
 <p>By default DocSearch expect websites to have server-side rendering, meaning that

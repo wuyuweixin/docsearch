@@ -15,20 +15,20 @@ the <code>docsearch.js</code> library into your website as per the following exa
 <code>apiKey</code> and <code>indexName</code> credentials will be given to you as soon as we've
 created your config.</p>
 <pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Before the closing &lt;/head&gt; --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> 
-  <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"</span> 
-/&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>
+  <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"</span>
+/&gt;</span>
 
 <span class="hljs-comment">&lt;!-- Before the closing &lt;/body&gt; --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> 
-  <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span> 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript"> 
-  docsearch({ 
-    <span class="hljs-comment">// Your apiKey and indexName will be given to you once </span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+  docsearch({
+    <span class="hljs-comment">// Your apiKey and indexName will be given to you once</span>
     <span class="hljs-comment">// we create your config</span>
     apiKey: <span class="hljs-string">'&lt;API_KEY&gt;'</span>,
     indexName: <span class="hljs-string">'&lt;INDEX_NAME&gt;'</span>,
-    <span class="hljs-comment">// Replace inputSelector with a CSS selector </span>
+    <span class="hljs-comment">// Replace inputSelector with a CSS selector</span>
     <span class="hljs-comment">// matching your search input</span>
     inputSelector: <span class="hljs-string">'&lt;YOUR_CSS_SELECTOR&gt;'</span>,
   });
@@ -37,7 +37,7 @@ created your config.</p>
 <h2 id="testing">Testing <a class="anchor" href="#testing" aria-hidden="true"></a></h2>
 <p>If you're eager to test DocSearch but don't have credentials of your own yet,
 you can use the one we use on this own website:</p>
-<pre><code class="hljs language-javascript">  docsearch({ 
+<pre><code class="hljs language-javascript">  docsearch({
     <span class="hljs-attr">apiKey</span>: <span class="hljs-string">'25626fae796133dc1e734c6bcaaeac3c'</span>,
     <span class="hljs-attr">indexName</span>: <span class="hljs-string">'docsearch'</span>,
   });

@@ -30,11 +30,17 @@ redirect the browser to the page matching part of the page, but you can override
 it to add your own behavior.</p>
 <p>The method is called with three arguments:</p>
 <ul>
-<li><code>input</code>, a reference to the search <code>input</code> element. It comes with the <code>.open()</code>,
-<code>.close()</code>, <code>.getVal()</code> and <code>.setVal()</code> methods.</li>
-<li><code>event</code>, the actual event triggering the selection. This can come from a click
-or a keyboard navigation.</li>
-<li><code>suggestion</code>, the object representing the current selection.</li>
+<li>
+<p><code>input</code>, a reference to the search <code>input</code> element. It comes with the <code>.open()</code>,
+<code>.close()</code>, <code>.getVal()</code> and <code>.setVal()</code> methods.</p>
+</li>
+<li>
+<p><code>event</code>, the actual event triggering the selection. This can come from a click
+or a keyboard navigation.</p>
+</li>
+<li>
+<p><code>suggestion</code>, the object representing the current selection.</p>
+</li>
 </ul>
 <pre><code class="hljs language-javascript">docsearch({
   […],
@@ -84,8 +90,11 @@ search.autocomplete.on(<span class="hljs-string">'autocomplete:opened'</span>, e
 <h2 id="algoliaoptions"><code>algoliaOptions</code> <a class="anchor" href="#algoliaoptions" aria-hidden="true"></a></h2>
 <p>You can pass options to the Algolia API by using the <code>algoliaOptions</code>
 key. You will find all Algolia API options in their <a href="https://www.algolia.com/doc/api-reference/api-parameters/">own documentation</a>.</p>
+<p>For example, you might want to increase the number of results displayed in the dropdown.
+<a href="https://www.algolia.com/doc/api-reference/api-parameters/hitsPerPage/"><code>hitsPerPage</code> set the number of shown hits</a>.</p>
 <pre><code class="hljs language-javascript">docsearch({
   <span class="hljs-attr">algoliaOptions</span>: {
+    <span class="hljs-attr">hitsPerPage</span>: <span class="hljs-number">10</span>,
     <span class="hljs-comment">// See https://www.algolia.com/doc/api-reference/api-parameters/</span>
   }
 });
