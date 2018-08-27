@@ -40,7 +40,7 @@ default theme.</p>
 
 <span class="hljs-comment">/* Description description (eg. Bootstrap currently works...) */</span>
 <span class="hljs-selector-class">.algolia-autocomplete</span> <span class="hljs-selector-class">.algolia-docsearch-suggestion--text</span> {
-  <span class="hljs-attribute">font-size</span>: .<span class="hljs-number">8rem</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8rem</span>;
   <span class="hljs-attribute">color</span>: gray;
 }
 
@@ -54,33 +54,33 @@ default theme.</p>
 and you're encouraged to style it to fit your own theming. All we ask is that
 you keep the <code>search by Algolia</code> logo and link next to your search results.</p>
 <p>The logo is automatically added in the dropdown with the default styling. It's
-ok to hide it through CSS, as long as you re-add it somewhere else on your page
+OK to hide it through CSS, as long as you re-add it somewhere else on your page
 close to the search input or search results. It's our way to let more people
 know about what do, and how they could also have from fast and relevant search
 on their website.</p>
 <p>If you're using your own <a href="https://www.algolia.com/pricing">paid Algolia account</a> and <a href="./crawler-overview.html">run the crawler
 yourself</a>, you don't have to keep the logo.</p>
 <h2 id="debugging">Debugging <a class="anchor" href="#debugging" aria-hidden="true"></a></h2>
-<p>If you want to inspect the dropdown markup with your browser tools, you should
-add <code>debug: true</code> to your <code>docsearch</code> call to prevent it from closing on
-inspection.</p>
+<p>To inspect the dropdown markup with your browser tools, you should add
+<code>debug: true</code> to your <code>docsearch</code> call to prevent it from closing on inspection.</p>
 <pre><code class="hljs language-javascript">docsearch({
   […],
   <span class="hljs-attr">debug</span>: <span class="hljs-literal">true</span>
 });
 </code></pre>
 <h2 id="other-considerations">Other considerations <a class="anchor" href="#other-considerations" aria-hidden="true"></a></h2>
-<p>Selected suggestion are wrapped in a <code>.ds-cursor</code> class. This means
-that you can use <code>.ds-cursor .algolia-docsearch-suggestion--content</code> to style
-the selected suggestion for example.</p>
+<p>Selected suggestion are wrapped in a <code>.ds-cursor</code> class. This means that you can
+use <code>.ds-cursor .algolia-docsearch-suggestion--content</code> to style the selected
+suggestion for example.</p>
 <p>On small screens, DocSearch reverts to a single column layout, while the
 two-column layout shown in the screenshot is used on larger screens. You can
 media queries (for example <code>@media (min-width: 768px) {}</code>) to target one or the
 other display.</p>
 <h2 id="advanced-styling">Advanced styling <a class="anchor" href="#advanced-styling" aria-hidden="true"></a></h2>
-<p>If you want to more heavily style the results, feel free to have a look at the
-<a href="https://github.com/algolia/docsearch/tree/master/src/styles">SCSS source code</a>.
-<code>_variables.scss</code> contains all the default theming, sizing and breakpoints.</p>
-<p>You can generate your own CSS file by cloning the repo and running <code>yarn run build:css</code>. The resulting file will be generated in <code>./dist/cdn</code>, and should be
-used instead of the default one.</p>
+<p>To more heavily style the results, feel free to have a look at the <a href="https://github.com/algolia/docsearch/tree/master/src/styles">SCSS source
+code</a>. <code>_variables.scss</code> contains all the default theming, sizing and
+breakpoints.</p>
+<p>You can generate your own CSS file by cloning the repository and running
+<code>yarn run build:css</code>. The resulting file will be generated in <code>./dist/cdn</code>, and
+should be used instead of the default one.</p>
 <!-- Include the apply form--></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="js/main.js"></script><script src="js/docs.js"></script></body><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8JP8G');</script></head></html>

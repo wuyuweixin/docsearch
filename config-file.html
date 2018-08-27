@@ -16,9 +16,7 @@ that will define how the crawler should behave. You can find all the configs in
 <p>A DocSearch looks like this:</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"index_name"</span>: <span class="hljs-string">"example"</span>,
-  <span class="hljs-attr">"start_urls"</span>: [
-    <span class="hljs-string">"https://www.example.com/docs"</span>
-  ],
+  <span class="hljs-attr">"start_urls"</span>: [<span class="hljs-string">"https://www.example.com/docs"</span>],
   <span class="hljs-attr">"selectors"</span>: {
     <span class="hljs-attr">"lvl0"</span>: <span class="hljs-string">"#content header h1"</span>,
     <span class="hljs-attr">"lvl1"</span>: <span class="hljs-string">"#content article h1"</span>,
@@ -27,27 +25,26 @@ that will define how the crawler should behave. You can find all the configs in
     <span class="hljs-attr">"lvl4"</span>: <span class="hljs-string">"#content section h5"</span>,
     <span class="hljs-attr">"lvl5"</span>: <span class="hljs-string">"#content section h6"</span>,
     <span class="hljs-attr">"text"</span>: <span class="hljs-string">"#content header p,#content section p,#content section ol"</span>
-  },
+  }
 }
 </code></pre>
 <h2 id="index_name"><code>index_name</code> <a class="anchor" href="#index_name" aria-hidden="true"></a></h2>
 <p>This is the name of the Algolia index where your records will be pushed. The
 <code>apiKey</code> we will share with you will be restricted to work on this index.</p>
 <p>When using the free DocSearch crawler, the <code>indexName</code> will always be the name
-of the config. If you're running DocSearch yourself, you can of course use any
-name you'd like.</p>
+of the config. If you're running DocSearch yourself, you can use any name you'd
+like.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"index_name"</span>: <span class="hljs-string">"example"</span>
 }
 </code></pre>
 <h2 id="start_urls"><code>start_urls</code> <a class="anchor" href="#start_urls" aria-hidden="true"></a></h2>
-<p>This array contains the list of urls that will be used to start crawling your
+<p>This array contains the list of URLs that will be used to start crawling your
 website. The crawler will recursively follow any links on those pages. It will
-not follow links that are on another domain and never follow links defined in <code>stop_urls</code>.</p>
+not follow links that are on another domain and never follow links defined in
+<code>stop_urls</code>.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"start_urls"</span>: [
-    <span class="hljs-string">"https://www.example.com/docs"</span>
-  ]
+  <span class="hljs-attr">"start_urls"</span>: [<span class="hljs-string">"https://www.example.com/docs"</span>]
 }
 </code></pre>
 <h3 id="using-regular-expressions">Using regular expressions <a class="anchor" href="#using-regular-expressions" aria-hidden="true"></a></h3>
@@ -58,14 +55,14 @@ that will be used to replace the named matches.</p>
 <p>The following example will make it clearer:</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"start_urls"</span>: [
-     {
-       <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/(?P&lt;lang&gt;.*?)/(?P&lt;version&gt;.*?)/"</span>,
-       <span class="hljs-attr">"variables"</span>: {
-         <span class="hljs-attr">"lang"</span>: [<span class="hljs-string">"en"</span>, <span class="hljs-string">"fr"</span>],
-         <span class="hljs-attr">"version"</span>: [<span class="hljs-string">"latest"</span>, <span class="hljs-string">"3.3"</span>, <span class="hljs-string">"3.2"</span>]
-       }
-     }
-   ]
+    {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/(?P&lt;lang&gt;.*?)/(?P&lt;version&gt;.*?)/"</span>,
+      <span class="hljs-attr">"variables"</span>: {
+        <span class="hljs-attr">"lang"</span>: [<span class="hljs-string">"en"</span>, <span class="hljs-string">"fr"</span>],
+        <span class="hljs-attr">"version"</span>: [<span class="hljs-string">"latest"</span>, <span class="hljs-string">"3.3"</span>, <span class="hljs-string">"3.2"</span>]
+      }
+    }
+  ]
 }
 </code></pre>
 <p>The beneficial side effect of using this syntax is that all records that will
@@ -73,7 +70,7 @@ then be extracted from crawling <code>http://www.example.com/docs/en/latest</cod
 have <code>lang: en</code> and <code>version: latest</code> added to it, allowing you to then filter
 based on those values.</p>
 <p>The following example shows how you can filter results matching specifics
-language and version from the front-end</p>
+language and version from the frontend</p>
 <pre><code class="hljs language-js">docsearch({
   […],
   <span class="hljs-attr">algoliaOptions</span>: {
@@ -83,16 +80,16 @@ language and version from the front-end</p>
 </code></pre>
 <h3 id="using-custom-tags">Using custom tags <a class="anchor" href="#using-custom-tags" aria-hidden="true"></a></h3>
 <p>You can also apply custom tags to some pages without the need to use regular
-expressions. In that case, add the list of tags to the <code>tags</code> key. Note
-that those tags will be automatically added as facets in Algolia, allowing you
-to filter based on their values as well.</p>
+expressions. In that case, add the list of tags to the <code>tags</code> key. Note that
+those tags will be automatically added as facets in Algolia, allowing you to
+filter based on their values as well.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"start_urls"</span>: [
     {
       <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/concepts/"</span>,
-      <span class="hljs-attr">"tags"</span>: ['concepts', 'terminology']
+      <span class="hljs-attr">"tags"</span>: [<span class="hljs-string">"concepts"</span>, <span class="hljs-string">"terminology"</span>]
     }
- ]
+  ]
 }
 </code></pre>
 <pre><code class="hljs language-js">docsearch({
@@ -103,19 +100,19 @@ to filter based on their values as well.</p>
 });
 </code></pre>
 <h3 id="using-page-rank">Using Page Rank <a class="anchor" href="#using-page-rank" aria-hidden="true"></a></h3>
-<p>If you want to give more weight to some pages to boost their ranking in the
-results, you can attribute a custom <code>page_rank</code> to specific urls. Pages with
-highest <code>page_rank</code> will be returned before pages with a lower <code>page_rank</code>. Note
-that you can pass any numeric value, including negative values.</p>
+<p>To give more weight to some pages to boost their ranking in the results, you can
+attribute a custom <code>page_rank</code> to specific URLs. Pages with highest <code>page_rank</code>
+will be returned before pages with a lower <code>page_rank</code>. Note that you can pass
+any numeric value, including negative values.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"start_urls"</span>: [
     {
       <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/concepts/"</span>,
-      <span class="hljs-attr">"page_rank"</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">"page_rank"</span>: <span class="hljs-number">5</span>
     },
     {
       <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/contributors/"</span>,
-      <span class="hljs-attr">"page_rank"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"page_rank"</span>: <span class="hljs-number">1</span>
     }
   ]
 }
@@ -173,7 +170,7 @@ set of selectors should be applied to specific pages.</p>
 record hierarchy. It can contains up to 6 levels (<code>lvl0</code>, <code>lvl1</code>, <code>lvl2</code>,
 <code>lvl3</code>, <code>lvl4</code>, <code>lvl5</code>) and <code>text</code>.</p>
 <p>A default config would be to target the page <code>title</code> or <code>h1</code> as <code>lvl0</code>, the <code>h2</code>
-as <code>lvl1</code> and <code>h3</code> as <code>lvl2</code> and  <code>p</code> as <code>text</code>, but this is highly dependent on
+as <code>lvl1</code> and <code>h3</code> as <code>lvl2</code> and <code>p</code> as <code>text</code>, but this is highly dependent on
 the markup.</p>
 <p>The <code>text</code> key is mandatory, but we highly recommend setting also <code>lvl0</code>, <code>lvl1</code>
 and <code>lvl2</code> to have a decent level of relevance.</p>
@@ -186,7 +183,7 @@ and <code>lvl2</code> to have a decent level of relevance.</p>
     <span class="hljs-attr">"lvl4"</span>: <span class="hljs-string">"#content section h5"</span>,
     <span class="hljs-attr">"lvl5"</span>: <span class="hljs-string">"#content section h6"</span>,
     <span class="hljs-attr">"text"</span>: <span class="hljs-string">"#content header p,#content section p,#content section ol"</span>
-  },
+  }
 }
 </code></pre>
 <p>Selectors can be passed as string, or as objects containing a <code>selector</code> key.
@@ -194,15 +191,15 @@ Other special keys can be set, as documented below.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"selectors"</span>: {
     <span class="hljs-attr">"lvl0"</span>: {
-      <span class="hljs-attr">"selector"</span>: <span class="hljs-string">"#content header h1"</span>,
+      <span class="hljs-attr">"selector"</span>: <span class="hljs-string">"#content header h1"</span>
     }
   }
 }
 </code></pre>
 <h3 id="using-global-selectors">Using global selectors <a class="anchor" href="#using-global-selectors" aria-hidden="true"></a></h3>
 <p>The default way of extracting content through selectors is to read the HTML
-markup from top to bottom. This works well with semi-structured content, like
-a hierarchy of headers. This breaks when relevant information is not part of the
+markup from top to bottom. This works well with semi-structured content, like a
+hierarchy of headers. This breaks when relevant information is not part of the
 same node flow. For example when the title is in a header or a sidebar.</p>
 <p>For that reason, you can set a selector as global, meaning that it will match on
 the whole page, and will be the same for all records extracted on this page.</p>
@@ -216,8 +213,8 @@ the whole page, and will be the same for all records extracted on this page.</p>
 }
 </code></pre>
 <h3 id="setting-a-default-value">Setting a default value <a class="anchor" href="#setting-a-default-value" aria-hidden="true"></a></h3>
-<p>If your selector might not match a valid element on the page, you can define
-a <code>default_value</code> to fallback to.</p>
+<p>If your selector might not match a valid element on the page, you can define a
+<code>default_value</code> to fallback to.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"selectors"</span>: {
     <span class="hljs-attr">"lvl0"</span>: {
@@ -287,13 +284,12 @@ meaning.</p>
 <p>Check the <a href="https://www.algolia.com/doc/api-reference/settings-api-parameters/">Algolia documentation</a> for more information on the settings.</p>
 <h3 id="min_indexed_level-optional"><code>min_indexed_level</code> <em>Optional</em> <a class="anchor" href="#min_indexed_level-optional" aria-hidden="true"></a></h3>
 <p>The default value is <code>0</code>. By increasing it, you can chose to not index some
-records if they don't have enough <code>lvlX</code> matching. For example, with
-a <code>min_indexed_level: 2</code>, records that have at least <code>lvl0</code>, <code>lvl1</code> and
-<code>lvl2</code> matching something will be indexed.</p>
+records if they don't have enough <code>lvlX</code> matching. For example, with a
+<code>min_indexed_level: 2</code>, records that have at least <code>lvl0</code>, <code>lvl1</code> and <code>lvl2</code>
+matching something will be indexed.</p>
 <p>This is useful when your documentation has pages that share the same <code>lvl0</code> and
 <code>lvl1</code> for example. In that case, you don't want to index all the shared
-records, but want to keep the one matching content that is different across
-pages.</p>
+records, but want to keep the content different across pages.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"min_indexed_level"</span>: <span class="hljs-number">2</span>
 }
@@ -301,13 +297,13 @@ pages.</p>
 <h3 id="nb_hits-special"><code>nb_hits</code> <em>Special</em> <a class="anchor" href="#nb_hits-special" aria-hidden="true"></a></h3>
 <p><code>nb_hits</code> automatically updated by DocSearch every time it runs your config. It
 is set to the number of records that were extracted and indexed. We check this
-key internally to keep track of any unintended spike or drop that could reveal
-a misconfiguration.</p>
-<p>You don't have to touch, we're documenting it here in case you were
-wondering what this was about.</p>
+key internally to keep track of any unintended spike or drop that could reveal a
+misconfiguration.</p>
+<p>You don't have to touch it, we're documenting it here in case you were wondering
+what this was about.</p>
 <h3 id="only_content_level-optional"><code>only_content_level</code> <em>Optional</em> <a class="anchor" href="#only_content_level-optional" aria-hidden="true"></a></h3>
 <p>When <code>only_content_level</code> is set to <code>true</code>, then the crawler won't create
-records for each <code>lvlX</code> selectors, but only for the <code>text</code> selectors.</p>
+records for the <code>lvlX</code> selectors.</p>
 <p>If used, <code>min_indexed_level</code> is ignored.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"only_content_level"</span>: <span class="hljs-literal">true</span>
@@ -324,13 +320,10 @@ if it's a duplicate of another page, you should set this to <code>false</code>.<
 <h3 id="selectors_exclude-optional"><code>selectors_exclude</code> <em>Optional</em> <a class="anchor" href="#selectors_exclude-optional" aria-hidden="true"></a></h3>
 <p>This expects an array of CSS selectors. Any element matching one of those
 selectors will be removed from the page before any data is extracted from it.</p>
-<p>This can be  used to remove a table of content, a sidebar or a footer, to
-make other selectors easier to write.</p>
+<p>This can be used to remove a table of content, a sidebar or a footer, to make
+other selectors easier to write.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"selectors_exclude"</span>: [
-    <span class="hljs-string">".footer"</span>,
-    <span class="hljs-string">"ul.deprecated"</span>
-  ],
+  <span class="hljs-attr">"selectors_exclude"</span>: [<span class="hljs-string">".footer"</span>, <span class="hljs-string">"ul.deprecated"</span>]
 }
 </code></pre>
 <h3 id="stop_urls-optional"><code>stop_urls</code> <em>Optional</em> <a class="anchor" href="#stop_urls-optional" aria-hidden="true"></a></h3>
@@ -342,34 +335,27 @@ the crawler should visit.</p>
 <code>http://www.example.com/docs/index.html</code> if you already have
 <code>http://www.example.com/docs/</code> as a <code>start_urls</code>.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"stop_urls"</span>: [
-    <span class="hljs-string">"https://www.example.com/docs/index.html"</span>,
-    <span class="hljs-string">"license.html"</span>
-  ],
+  <span class="hljs-attr">"stop_urls"</span>: [<span class="hljs-string">"https://www.example.com/docs/index.html"</span>, <span class="hljs-string">"license.html"</span>]
 }
 </code></pre>
 <h2 id="sitemaps">Sitemaps <a class="anchor" href="#sitemaps" aria-hidden="true"></a></h2>
 <p>If your website has a <code>sitemap.xml</code> file, you can let DocSearch know and it will
 use it to define which pages to crawl.</p>
 <h3 id="sitemap_urls-optional"><code>sitemap_urls</code> <em>Optional</em> <a class="anchor" href="#sitemap_urls-optional" aria-hidden="true"></a></h3>
-<p>You can pass an array of urls pointing to your sitemap(s) files. If this value
-is set, DocSearch will try to read urls from your sitemap(s) instead of
+<p>You can pass an array of URLs pointing to your sitemap(s) files. If this value
+is set, DocSearch will try to read URLs from your sitemap(s) instead of
 following every link of your <code>starts_urls</code>.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"sitemap_urls"</span>: [
-    <span class="hljs-string">"http://www.example.com/docs/sitemap.xml"</span>
-  ],
+  <span class="hljs-attr">"sitemap_urls"</span>: [<span class="hljs-string">"http://www.example.com/docs/sitemap.xml"</span>]
 }
 </code></pre>
 <h3 id="sitemap_alternate_links-optional"><code>sitemap_alternate_links</code> <em>Optional</em> <a class="anchor" href="#sitemap_alternate_links-optional" aria-hidden="true"></a></h3>
-<p>Sitemaps can contain <em>alternative links</em> for urls. Those are other versions of
-the same page, in a different language, or with a different url. By default
-DocSearch will ignore those urls.</p>
+<p>Sitemaps can contain <em>alternative links</em> for URLs. Those are other versions of
+the same page, in a different language, or with a different URL. By default
+DocSearch will ignore those URLs.</p>
 <p>Set this to <code>true</code> if you want those other version to be crawled as well.</p>
 <pre><code class="hljs language-json">{
-  <span class="hljs-attr">"sitemap_urls"</span>: [
-    <span class="hljs-string">"http://www.example.com/docs/sitemap.xml"</span>
-  ],
+  <span class="hljs-attr">"sitemap_urls"</span>: [<span class="hljs-string">"http://www.example.com/docs/sitemap.xml"</span>],
   <span class="hljs-attr">"sitemap_alternate_links"</span>: <span class="hljs-literal">true</span>
 }
 </code></pre>
@@ -383,13 +369,13 @@ crawled.</p>
 </code></pre>
 <h2 id="javascript-rendering">JavaScript rendering <a class="anchor" href="#javascript-rendering" aria-hidden="true"></a></h2>
 <p>By default DocSearch expect websites to have server-side rendering, meaning that
-HTML source is returned directly by the server. If your content is generated by the
-front-end, you have to tell DocSearch to emulate a browser through Selenium.</p>
+HTML source is returned directly by the server. If your content is generated by
+the front-end, you have to tell DocSearch to emulate a browser through Selenium.</p>
 <p><em>As client-side crawling is way slower than server-side crawling, we highly
 encourage you to update your website to enable server-side rendering.</em></p>
 <h3 id="js_render-optional"><code>js_render</code> <em>Optional</em> <a class="anchor" href="#js_render-optional" aria-hidden="true"></a></h3>
 <p>Set this value to true if your website requires client-side rendering. This will
-make DocSearch spawn a Selenium proxy to fetch all your webpages.</p>
+make DocSearch spawn a Selenium proxy to fetch all your web pages.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"js_render"</span>: <span class="hljs-literal">true</span>
 }
@@ -398,9 +384,9 @@ make DocSearch spawn a Selenium proxy to fetch all your webpages.</p>
 <p>If your website is slow to load, you can use <code>js_wait</code> to tell DocSearch to wait
 a specific amount of time (in seconds) for the page to load before extracting
 its content.</p>
-<p>Note that this option might have a large impact on the time required
-to crawl your website and we would encourage you to enable server-side rendering
-on your website instead.</p>
+<p>Note that this option might have a large impact on the time required to crawl
+your website and we would encourage you to enable server-side rendering on your
+website instead.</p>
 <p>This option has no impact if <code>js_render</code> is set to <code>false</code>.</p>
 <pre><code class="hljs language-json">{
   <span class="hljs-attr">"js_render"</span>: <span class="hljs-literal">true</span>,
@@ -409,7 +395,7 @@ on your website instead.</p>
 </code></pre>
 <h3 id="use_anchors-optional"><code>use_anchors</code> <em>Optional</em> <a class="anchor" href="#use_anchors-optional" aria-hidden="true"></a></h3>
 <p>Websites using client-side rendering often don't use full urls, but instead take
-advantage of the url hash (the part after the <code>#</code>).</p>
+advantage of the URL hash (the part after the <code>#</code>).</p>
 <p>If your website is using such urls, you should set <code>use_anchors</code> to <code>true</code> for
 DocSearch to index all your content.</p>
 <pre><code class="hljs language-json">{

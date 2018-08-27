@@ -31,8 +31,8 @@ it to add your own behavior.</p>
 <p>The method is called with three arguments:</p>
 <ul>
 <li>
-<p><code>input</code>, a reference to the search <code>input</code> element. It comes with the <code>.open()</code>,
-<code>.close()</code>, <code>.getVal()</code> and <code>.setVal()</code> methods.</p>
+<p><code>input</code>, a reference to the search <code>input</code> element. It comes with the
+<code>.open()</code>, <code>.close()</code>, <code>.getVal()</code> and <code>.setVal()</code> methods.</p>
 </li>
 <li>
 <p><code>event</code>, the actual event triggering the selection. This can come from a click
@@ -60,9 +60,8 @@ provide this hook for you to add your own logic if you want.</p>
 });
 </code></pre>
 <h2 id="transformdata"><code>transformData</code> <a class="anchor" href="#transformdata" aria-hidden="true"></a></h2>
-<p>This method will be called on all suggestions before displaying them. It
-doesn't do anything by default, but we provide this hook if you want to add your
-own logic.</p>
+<p>This method will be called on all suggestions before displaying them. It doesn't
+do anything by default, but we provide this hook for you to add your own logic.</p>
 <pre><code class="hljs language-javascript">docsearch({
   […],
   <span class="hljs-attr">transformData</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">suggestions</span>) </span>{
@@ -88,15 +87,15 @@ search.autocomplete.on(<span class="hljs-string">'autocomplete:opened'</span>, e
 });
 </code></pre>
 <h2 id="algoliaoptions"><code>algoliaOptions</code> <a class="anchor" href="#algoliaoptions" aria-hidden="true"></a></h2>
-<p>You can pass options to the Algolia API by using the <code>algoliaOptions</code>
-key. You will find all Algolia API options in their <a href="https://www.algolia.com/doc/api-reference/api-parameters/">own documentation</a>.</p>
-<p>For example, you might want to increase the number of results displayed in the dropdown.
-<a href="https://www.algolia.com/doc/api-reference/api-parameters/hitsPerPage/"><code>hitsPerPage</code> set the number of shown hits</a>.</p>
+<p>You can pass options to the Algolia API by using the <code>algoliaOptions</code> key. You
+will find all Algolia API options in their <a href="https://www.algolia.com/doc/api-reference/api-parameters/">own documentation</a>.</p>
+<p>For example, you might want to increase the number of results displayed in the
+dropdown. <a href="https://www.algolia.com/doc/api-reference/api-parameters/hitsPerPage/"><code>hitsPerPage</code> set the number of shown hits</a>.</p>
 <pre><code class="hljs language-javascript">docsearch({
   <span class="hljs-attr">algoliaOptions</span>: {
     <span class="hljs-attr">hitsPerPage</span>: <span class="hljs-number">10</span>,
     <span class="hljs-comment">// See https://www.algolia.com/doc/api-reference/api-parameters/</span>
-  }
+  },
 });
 </code></pre>
 <!-- Include the apply form--></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="js/main.js"></script><script src="js/docs.js"></script></body><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8JP8G');</script></head></html>

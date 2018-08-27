@@ -20,9 +20,9 @@ pages until it has crawled all your website.</p>
 all pages.</p>
 <h2 id="extracting-content">Extracting content <a class="anchor" href="#extracting-content" aria-hidden="true"></a></h2>
 <p>Then, for each page, it will read the HTML markup from top to bottom. It will
-look for HTML elements matching your CSS <code>selectors</code>. It will specifically look
-for elements matching your <code>text</code> selector (<code>&lt;p&gt;</code> by default). Each of those
-matches will be later transformed into an Algolia record.</p>
+look for HTML elements matching your CSS <code>selectors</code>. It will look for elements
+matching your <code>text</code> selector (<code>&lt;p&gt;</code> by default). Each of those matches will be
+later transformed into an Algolia record.</p>
 <p>For each matching <code>text</code> element, the crawler will also keep in memory the
 current hierarchy of headers (identified by the <code>lvl0</code> to <code>lvl5</code> selectors) that
 it had to traverse to get to this text. This hierarchical information, as well
@@ -38,17 +38,16 @@ approach</a>. DocSearch will first search for exact matches in your keywords
 then fallback to partial matches. Those results will then be ordered based, once
 again, on the page hierarchy, as extracted from the <code>selectors</code>.</p>
 <p>The default strategy is to first look at the closest header of the matching
-text. If a matching paragraph of text is under <code>Advanced Settings / API Options / verySpecificMethod()</code>, it will be ranked higher than if it is only found under
-<code>Gettings Started &gt; Installation</code>. The idea here is that if you have a match
-under a very deep hierarchy, chances are that this match is very specific and
-might be more interesting that something found in a very broad topic.</p>
+text. For example, a paragraph under <code>Settings / API / verySpecificMethod()</code>,
+will be ranked higher than one under <code>Settings / API</code>. The idea here is that if
+you have a match under a deep hierarchy, chances are that this match is specific
+and might be more interesting that something found in a broad topic.</p>
 <p>But this does not work in all cases as some documentations don't have deep
 hierarchy. In that case, we use the paragraph position. The first paragraph of
 the page will be ranked higher than the last one.</p>
 <p>You also have a way to boost some pages directly in your config by using the
-<code>page_rank</code> option. This accepts a numeric value, and all pages with
-a <code>page_rank</code> of 5 will be returned before pages with a <code>page_rank</code> of 1.</p>
-<p>If you want to get fancy, you could even overwrite the default
-<code>customRanking</code> used by the index by using the <code>custom_settings</code> option of
-your config.</p>
+<code>page_rank</code> option. This accepts a numeric value, and all pages with a
+<code>page_rank</code> of 5 will be returned before pages with a <code>page_rank</code> of 1.</p>
+<p>You could even overwrite the default <code>customRanking</code> used by the index by using
+the <code>custom_settings</code> option of your config.</p>
 <!-- Include the apply form--></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="js/main.js"></script><script src="js/docs.js"></script></body><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8JP8G');</script></head></html>
