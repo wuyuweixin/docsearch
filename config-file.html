@@ -47,6 +47,62 @@ not follow links that are on another domain and never follow links defined in
   <span class="hljs-attr">"start_urls"</span>: [<span class="hljs-string">"https://www.example.com/docs"</span>]
 }
 </code></pre>
+<h3 id="selectors_key%2C-tailor-your-selectors"><code>selectors_key</code>, tailor your selectors <a class="anchor" href="#selectors_key%2C-tailor-your-selectors" aria-hidden="true"></a></h3>
+<p>You can define finer sets of selectors depending on the URL. This is done thanks
+to the parameter <code>selectors_key</code> from your <code>start_urls</code> item.</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">"start_urls"</span>: [
+    {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/faq/"</span>,
+      <span class="hljs-attr">"selectors_key"</span>: <span class="hljs-string">"faq"</span>
+    },
+    {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/docs/"</span>
+    }
+  ],
+  […],
+  <span class="hljs-attr">"selectors"</span>: {
+    <span class="hljs-attr">"default"</span>: {
+      <span class="hljs-attr">"lvl0"</span>: <span class="hljs-string">".docs h1"</span>,
+      <span class="hljs-attr">"lvl1"</span>: <span class="hljs-string">".docs h2"</span>,
+      <span class="hljs-attr">"lvl2"</span>: <span class="hljs-string">".docs h3"</span>,
+      <span class="hljs-attr">"lvl3"</span>: <span class="hljs-string">".docs h4"</span>,
+      <span class="hljs-attr">"lvl4"</span>: <span class="hljs-string">".docs h5"</span>,
+      <span class="hljs-attr">"text"</span>: <span class="hljs-string">".docs p, .docs li"</span>
+    },
+    <span class="hljs-attr">"faq"</span>: {
+      <span class="hljs-attr">"lvl0"</span>: <span class="hljs-string">".faq h1"</span>,
+      <span class="hljs-attr">"lvl1"</span>: <span class="hljs-string">".faq h2"</span>,
+      <span class="hljs-attr">"lvl2"</span>: <span class="hljs-string">".faq h3"</span>,
+      <span class="hljs-attr">"lvl3"</span>: <span class="hljs-string">".faq h4"</span>,
+      <span class="hljs-attr">"lvl4"</span>: <span class="hljs-string">".faq h5"</span>,
+      <span class="hljs-attr">"text"</span>: <span class="hljs-string">".faq p, .faq li"</span>
+    }
+  }
+}
+</code></pre>
+<p>To find the right subset to use based on the URL, we iterate over these
+<code>start_urls</code> items. The first one matching is applied.</p>
+<p>Considering the URL <code>http://www.example.com/en/api/</code> with the configuration:</p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">"start_urls"</span>: [
+    {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/doc/"</span>,
+      <span class="hljs-attr">"selectors_key"</span>: <span class="hljs-string">"doc"</span>
+    },
+    {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.example.com/doc/faq/"</span>,
+      <span class="hljs-attr">"selectors_key"</span>: <span class="hljs-string">"faq"</span>
+    },
+   […],
+  ]
+}
+</code></pre>
+<p>Only the set of selector related to <code>doc</code> will be applied to the URL. The
+correct configuration should be build the other way around (as primarily
+described).</p>
+<p>If one <code>start_urls</code> item has no <code>selectors_key</code> defined, the <code>default</code> set will
+be used. Do not forget to precise this fallback.</p>
 <h3 id="using-regular-expressions">Using regular expressions <a class="anchor" href="#using-regular-expressions" aria-hidden="true"></a></h3>
 <p>The <code>start_urls</code> option also allows for passing an object in place of a string,
 to express more complex patterns. This object must contain a <code>url</code> key
@@ -76,6 +132,7 @@ language and version from the frontend</p>
   <span class="hljs-attr">algoliaOptions</span>: {
     <span class="hljs-string">'facetFilters'</span>: [<span class="hljs-string">"lang:en"</span>, <span class="hljs-string">"version:latest"</span>]
   },
+  […],
 });
 </code></pre>
 <h3 id="using-custom-tags">Using custom tags <a class="anchor" href="#using-custom-tags" aria-hidden="true"></a></h3>
@@ -92,6 +149,7 @@ filter based on their values as well.</p>
   ]
 }
 </code></pre>
+<p>From your JS snippet:</p>
 <pre><code class="hljs language-js">docsearch({
   […],
   <span class="hljs-attr">algoliaOptions</span>: {

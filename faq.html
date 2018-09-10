@@ -54,7 +54,7 @@ more complete information in our <a href="https://www.algolia.com/policies/priva
 parts of your website, you'll need to create your own Algolia account and
 either:</p>
 <ul>
-<li>Run the <a href="./crawler-overview.html">DocSearch crawler</a> on your own</li>
+<li>Run the <a href="./run-your-own.html">DocSearch crawler</a> on your own</li>
 <li>Use one of our other <a href="https://www.algolia.com/doc/api-reference/">framework integrations or API clients</a></li>
 </ul>
 <h3 id="can-you-index-code-samples%3F">Can you index code samples? <a class="anchor" href="#can-you-index-code-samples%3F" aria-hidden="true"></a></h3>
@@ -76,10 +76,18 @@ as those starting with <code>http://</code>.</p>
   <span class="hljs-attr">"stop_urls"</span>: [<span class="hljs-string">"/$"</span>, <span class="hljs-string">"/index.html$"</span>, <span class="hljs-string">"^http://"</span>]
 }
 </code></pre>
+<h3 id="why-are-the-custom-changes-from-the-algolia-dashboard-ineffective%3F">Why are the custom changes from the Algolia dashboard ineffective? <a class="anchor" href="#why-are-the-custom-changes-from-the-algolia-dashboard-ineffective%3F" aria-hidden="true"></a></h3>
+<p>Changing your setting from the dashboard might be something you want to do for
+some reasons .</p>
+<p>Please be aware that your DocSearch settings are set at every time the crawler
+is successful. These settings will be overridden at the next crawl. We <strong>do not
+recommend to edit anything from the dashboard</strong>. These changes have be made from
+the JSON configuration itself.</p>
+<p>You can use the <a href="./config-file.html#custom_settings-optional">custom_settings parameter</a> in such purpose.</p>
 <h3 id="a-documentation-website-i-like-does-not-use-docsearch.-what-can-i-do%3F">A documentation website I like does not use DocSearch. What can I do? <a class="anchor" href="#a-documentation-website-i-like-does-not-use-docsearch.-what-can-i-do%3F" aria-hidden="true"></a></h3>
 <p>We'd love to help!</p>
 <p>If one of your favorite tool documentation websites is missing DocSearch, we
 encourage you to file an issue in their repository explaining how DocSearch
-could help. Feel free to ping <code>@docsearch</code> on GitHub in the issue as well, and
-we'll provide all the help we can.</p>
+could help. Feel free to <a href="mailto:docsearch@algolia.com">send us an email</a> as well, and we'll provide all
+the help we can.</p>
 <!-- Include the apply form--><div class="my-3 italic"><a href="https://github.com/algolia/docsearch/tree/master/docs/src/faq.md">Edit this page</a></div></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="js/main.js"></script><script src="js/docs.js"></script></body><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8JP8G');</script></head></html>
