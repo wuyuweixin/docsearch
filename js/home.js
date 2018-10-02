@@ -8,9 +8,6 @@ window.onload = function () {
     apiKey: '5990ad008512000bba2cf951ccf0332f',
     indexName: 'bootstrap',
     inputSelector: '.docsearch-live-demo-input',
-    algoliaOptions: {
-      facetFilters: ['version:4.1']
-    },
     enhancedSearchInput: true,
     debug: false
   });
